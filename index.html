@@ -13,11 +13,11 @@
     <h1>Monthly Salary Calculator</h1>
 
     <div class="inputs">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="text" placeholder="ID Number">
-        <input type="text" placeholder="Job Title" id="">
-        <input type="text" placeholder="Annual Salary">
+        <input type="text" placeholder="First Name" id="employeeFirstName">
+        <input type="text" placeholder="Last Name" id="employeeLastName">
+        <input type="text" placeholder="ID Number" id="employeeID">
+        <input type="text" placeholder="Job Title" id="employeeJobTitle">
+        <input type="text" placeholder="Annual Salary" id="employeeSalary">
         <button id="submit">Submit</button>
     </div>
 
@@ -32,7 +32,7 @@
                 <th></th> <!-- empty column for delete button-->
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tableBody">
             <!-- This is the place for the employee data to go -->
         </tbody>
     </table>
