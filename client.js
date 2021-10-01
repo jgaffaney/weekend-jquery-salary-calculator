@@ -41,6 +41,7 @@ function addEmployee() {
 
     //update DOM
     displayEmployees();
+    calculateMonthly();
 }
 
 //a function to display all employees on the DOM
@@ -72,11 +73,18 @@ function displayEmployees() {
 function calculateMonthly() {
     //loop through employees
     //add annualSalary to totalSalary
+    let totalSalaries = 0;
+    for(let employee of employees) {
+        totalSalaries += Number(employee.annualSalary);
+    }
+    $('#totalSalaries').empty();
+    $('#totalSalaries').append(totalSalaries);
 }
 
 //a function to remove an employee from employees and the DOM
 //recalculate monthly salary costs
 function removeEmployee() {
+    employees.splice(($(this).closest('tr').index()), 1);
     $(this).closest('tr').remove();
     calculateMonthly();
 }
