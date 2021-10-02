@@ -28,7 +28,7 @@ function addEmployee() {
         annualSalary: $('#employeeSalary').val()
     }
     //push the employee object to the employees array
-    employees.push(employee);    
+    employees.push(employee);
 
     //empty the inputs
     $('.inputs').children().val('')
@@ -44,14 +44,14 @@ function displayEmployees() {
     $('#tableBody').empty();
     //loop through employees array
     //append each employee to the table
-    for(let employee of employees) {
+    for (let employee of employees) {
         const tableRow = $(`
             <tr>
                 <td>${employee.firstName}</td>
                 <td>${employee.lastName}</td>
                 <td>${employee.employeeID}</td>
                 <td>${employee.jobTitle}</td>
-                <td>${employee.annualSalary}</td>
+                <td>${Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(employee.annualSalary)}</td>
                 <td><button class="removeEmployee">Remove</button>
             </tr>
         `)
@@ -67,18 +67,21 @@ function calculateMonthly() {
     //loop through employees
     //add annualSalary to totalSalary
     let totalSalaries = 0;
-    for(let employee of employees) {
+    for (let employee of employees) {
         totalSalaries += Number(employee.annualSalary);
     }
-    //calculate monthly cost from total annual salaries, limit to 2 decimals
-    let monthlySalaries = (totalSalaries/12).toFixed(2);
+    //calculate monthly cost from total annual salaries
+    let monthlySalaries = (totalSalaries / 12);
+
 
     //update the DOM
+    //convert to currency for display
+
     $('#monthlySalaries').empty();
-    $('#monthlySalaries').append(monthlySalaries);
-    
+    $('#monthlySalaries').append(Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthlySalaries));
+
     //change to red background if over 20000, remove red background in drops below 20000 after removing employee
-    if(monthlySalaries > 20000) {
+    if (monthlySalaries > 20000) {
         $('#monthlySalaries').addClass('overBudget');
     } else {
         $('#monthlySalaries').removeClass('overBudget');
