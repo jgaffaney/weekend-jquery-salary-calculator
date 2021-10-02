@@ -1,3 +1,76 @@
+body {
+    background-color: #40798C;
+}
+
+h1  {
+    text-align: center;
+    color: #1F363D;
+}
+
+.inputs {
+    display: grid;
+    width: 35%;
+
+}  
+
+table {
+    margin-top: 20px;
+    background-color: #CFE0C3;
+}
+
+table, th, td {
+    border: 1px solid #1F363D;
+    /* border-bottom: 2px solid #1F363D; */
+    border-spacing: 0px;
+}
+
+th {
+    background-color: #70A9A1;
+}
+
+/* tbody tr {
+    border-left: none;
+    border-right: none;
+    border-spacing: 2px;
+} */
+
+input {
+    height: 20px;
+    margin-top: 10px;
+}
+
+table tbody tr button {
+    margin: 0 auto;
+}
+
+/* table tbody tr:nth-child(odd)) {
+    background-color: #1F363D;
+} */
+
+tr:nth-child(even) {
+    background-color: #70A9A1;
+}
+
+.inputs button {
+    width: 20%;
+
+}
+button {
+    margin-top: 10px;
+    color: #1F363D;
+}
+
+.deleteButton {
+    display: block;
+    width: 50%;
+    vertical-align: top;
+}
+
+#empty {
+    border-top: 1px solid #1F363D;
+    border-bottom: 1px solid #1F363D;
+}
+
 .overBudget {
     background-color: red;
 }
