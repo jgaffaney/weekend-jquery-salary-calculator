@@ -5,15 +5,12 @@ $(readyNow);
 let employees = [];
 let totalSalary = 0;
 
-
 function readyNow() {
-
     //click listeners
     $('#submit').on('click', addEmployee)
 
     //dynamic click listener
     $('#employeeDataTable').on('click', '.removeEmployee', removeEmployee)
-
 }
 
 //a function to add an employee to the employees array 
@@ -45,20 +42,19 @@ function displayEmployees() {
     //loop through employees array
     //append each employee to the table
     for (let employee of employees) {
+        let displaySalary = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(employee.annualSalary)
         const tableRow = $(`
             <tr>
                 <td>${employee.firstName}</td>
                 <td>${employee.lastName}</td>
                 <td>${employee.employeeID}</td>
                 <td>${employee.jobTitle}</td>
-                <td>${Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(employee.annualSalary)}</td>
+                <td>${displaySalary}</td>
                 <td><button class="removeEmployee">Remove</button>
             </tr>
         `)
         $('#tableBody').append(tableRow);
-
     }
-
 }
 
 //a function to loop through the employees and calculate total of monthly salaries
@@ -73,14 +69,13 @@ function calculateMonthly() {
     //calculate monthly cost from total annual salaries
     let monthlySalaries = (totalSalaries / 12);
 
-
     //update the DOM
     //convert to currency for display
 
     $('#monthlySalaries').empty();
     $('#monthlySalaries').append(Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(monthlySalaries));
 
-    //change to red background if over 20000, remove red background in drops below 20000 after removing employee
+    //change to red background if over 20000, remove red background if drops below 20000 after removing employee
     if (monthlySalaries > 20000) {
         $('#monthlySalaries').addClass('overBudget');
     } else {
